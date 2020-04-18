@@ -8020,7 +8020,7 @@ WB:function(a){return $.a1D().n5("GET","https://corona.lmao.ninja"+a,$.a7a).Tk(0
 U1:function(){var u=0,t=P.a1(D.r5),s,r,q,p
 var $async$U1=P.Y(function(a,b){if(a===1)return P.Z(b,t)
 while(true)switch(u){case 0:u=3
-return P.a8(U.WB("/all"),$async$U1)
+return P.a8(U.WB("/v2/all"),$async$U1)
 case 3:q=b
 p=q.b
 if(p===200){r=C.aT.nx(0,B.pu(U.pp(q.e).c.a.i(0,"charset")).cq(0,q.x),null)
@@ -8033,7 +8033,7 @@ return P.a0($async$U1,t)},
 U_:function(){var u=0,t=P.a1([P.x,D.i2]),s,r,q
 var $async$U_=P.Y(function(a,b){if(a===1)return P.Z(b,t)
 while(true)switch(u){case 0:u=3
-return P.a8(U.WB("/countries?sort=cases"),$async$U_)
+return P.a8(U.WB("/v2/countries?sort=cases"),$async$U_)
 case 3:r=b
 q=r.b
 if(q===200){s=J.Uz(C.aT.nx(0,B.pu(U.pp(r.e).c.a.i(0,"charset")).cq(0,r.x),null),new U.U0(),D.i2).b3(0)
