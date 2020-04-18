@@ -8044,7 +8044,7 @@ return P.a0($async$U_,t)},
 U2:function(){var u=0,t=P.a1([P.x,D.iL]),s,r,q
 var $async$U2=P.Y(function(a,b){if(a===1)return P.Z(b,t)
 while(true)switch(u){case 0:u=3
-return P.a8(U.WB("/states?sort=cases"),$async$U2)
+return P.a8(U.WB("/v2/states?sort=cases"),$async$U2)
 case 3:r=b
 q=r.b
 if(q===200){s=J.Uz(C.aT.nx(0,B.pu(U.pp(r.e).c.a.i(0,"charset")).cq(0,r.x),null),new U.U3(),D.iL).b3(0)
