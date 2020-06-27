@@ -28,12 +28,32 @@ class _DashboardState extends State<Dashboard> {
       StateView(),
     ];
     final _kBottomNavBarItems = <BottomNavigationBarItem>[
-      BottomNavigationBarItem(icon: Icon(Icons.map, color: _currentIndex == 0 ? blueLight : grey,), title: Text('Global', style: TextStyle(color: _currentIndex == 0 ? blueLight : grey, fontWeight: FontWeight.w700),)),
-      BottomNavigationBarItem(icon: Icon(Icons.dashboard, color: _currentIndex == 1 ? blueLight : grey,), title: Text('States', style: TextStyle(color: _currentIndex == 1 ? blueLight : grey, fontWeight: FontWeight.w700),)),
+      BottomNavigationBarItem(
+          icon: Icon(
+            Icons.map,
+            color: _currentIndex == 0 ? blueLight : grey,
+          ),
+          title: Text(
+            'Global',
+            style: TextStyle(
+                color: _currentIndex == 0 ? blueLight : grey,
+                fontWeight: FontWeight.w700),
+          )),
+      BottomNavigationBarItem(
+          icon: Icon(
+            Icons.dashboard,
+            color: _currentIndex == 1 ? blueLight : grey,
+          ),
+          title: Text(
+            'States',
+            style: TextStyle(
+                color: _currentIndex == 1 ? blueLight : grey,
+                fontWeight: FontWeight.w700),
+          )),
     ];
     assert(_kPages.length == _kBottomNavBarItems.length);
     final _bottomNavBar = BottomNavigationBar(
-      backgroundColor: Colors.grey[850],
+      backgroundColor: Colors.white,
       items: _kBottomNavBarItems,
       currentIndex: _currentIndex,
       type: BottomNavigationBarType.fixed,
@@ -46,24 +66,31 @@ class _DashboardState extends State<Dashboard> {
 
     return Scaffold(
       appBar: AppBar(
-        title: SelectableText("COVID-19 Live Dashboard", style: Theme.of(context).textTheme.subhead,),
+        title: SelectableText(
+          "COVID-19 Live Dashboard",
+          style: Theme.of(context).textTheme.subhead,
+        ),
         backgroundColor: Theme.of(context).backgroundColor,
         elevation: 0.0,
         actions: <Widget>[
           FlatButton(
-            child: Text("JHU Data", style: Theme.of(context).textTheme.body2,),
-            onPressed: (){
+            child: Text(
+              "JHU Data",
+              style: Theme.of(context).textTheme.body2,
+            ),
+            onPressed: () {
               isWeb(context)
                   ? launchURL(JHU_WEB_URL)
                   : launchURL(JHU_MOBILE_URL);
             },
           ),
           FlatButton(
-            child: Text("NJ Data", style: Theme.of(context).textTheme.body2,),
-            onPressed: (){
-              isWeb(context)
-                ? launchURL(NJ_WEB_URL)
-                : launchURL(NJ_MOBILE_URL);
+            child: Text(
+              "NJ Data",
+              style: Theme.of(context).textTheme.body2,
+            ),
+            onPressed: () {
+              isWeb(context) ? launchURL(NJ_WEB_URL) : launchURL(NJ_MOBILE_URL);
             },
           ),
         ],

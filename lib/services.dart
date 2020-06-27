@@ -14,14 +14,15 @@ final kHeader = {"Content-Type": "application/json"};
 ///========================================================
 
 Future<http.Response> getRequest(String endPoint) {
-  return client.get(BASE_URL + endPoint, headers: kHeader)
+  return client
+      .get(BASE_URL + endPoint, headers: kHeader)
       .timeout(const Duration(seconds: 30));
 }
 
 ///=======================================================
 
 Future<GlobalData> fetchGlobalData() async {
-  var response = await getRequest("/all");
+  var response = await getRequest("/v2/all");
 
   if (response.statusCode == 200) {
     var data = jsonDecode(response.body);
@@ -33,7 +34,7 @@ Future<GlobalData> fetchGlobalData() async {
 }
 
 Future<List<CountryData>> fetchCountryData() async {
-  var response = await getRequest("/countries?sort=cases");
+  var response = await getRequest("/v2/countries?sort=cases");
 
   if (response.statusCode == 200) {
     var data = jsonDecode(response.body);
@@ -47,7 +48,7 @@ Future<List<CountryData>> fetchCountryData() async {
 }
 
 Future<List<StateData>> fetchStateData() async {
-  var response = await getRequest("/states?sort=cases");
+  var response = await getRequest("/v2/states?sort=cases");
 
   if (response.statusCode == 200) {
     var data = jsonDecode(response.body);
@@ -59,8 +60,6 @@ Future<List<StateData>> fetchStateData() async {
     throw SomethingWentWrong();
   }
 }
-
-
 
 ///================= EXCEPTION(s) ==================
 

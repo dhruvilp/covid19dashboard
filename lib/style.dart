@@ -60,15 +60,48 @@ ThemeData _buildLightTheme() {
     scaffoldBackgroundColor: white,
     canvasColor: transparent,
     textTheme: TextTheme(
-      display4: TextStyle(fontSize: 100.0, color: blue, fontWeight: FontWeight.w600,),
-      display3: TextStyle(fontSize: 90.0, color: blue, fontWeight: FontWeight.bold,),
-      display2: TextStyle(fontSize: 45.0, color: blue,),
-      display1: TextStyle(fontSize: 35.0, color: blue,),
-      headline: TextStyle(fontSize: 25.0, color: charcoal_light, fontWeight: FontWeight.w700,),
-      title: TextStyle(fontSize: 20.0, color: blue, fontWeight: FontWeight.w700,),
-      subhead: TextStyle(fontSize: 18.0, color: charcoal_light, fontWeight: FontWeight.w700,),
-      body2: TextStyle(color: blue, fontWeight: FontWeight.w700,),
-      body1: TextStyle(fontSize: 16.0, color: charcoal_light, fontWeight: FontWeight.w700,),
+      headline1: TextStyle(
+        fontSize: 100.0,
+        color: blue,
+        fontWeight: FontWeight.w600,
+      ),
+      headline2: TextStyle(
+        fontSize: 90.0,
+        color: blue,
+        fontWeight: FontWeight.bold,
+      ),
+      headline3: TextStyle(
+        fontSize: 45.0,
+        color: blue,
+      ),
+      headline4: TextStyle(
+        fontSize: 35.0,
+        color: blue,
+      ),
+      headline5: TextStyle(
+        fontSize: 25.0,
+        color: charcoal_light,
+        fontWeight: FontWeight.w700,
+      ),
+      headline6: TextStyle(
+        fontSize: 20.0,
+        color: blue,
+        fontWeight: FontWeight.w700,
+      ),
+      subtitle1: TextStyle(
+        fontSize: 18.0,
+        color: charcoal_light,
+        fontWeight: FontWeight.w700,
+      ),
+      bodyText1: TextStyle(
+        color: blue,
+        fontWeight: FontWeight.w700,
+      ),
+      bodyText2: TextStyle(
+        fontSize: 16.0,
+        color: charcoal_light,
+        fontWeight: FontWeight.w700,
+      ),
     ),
   );
 
@@ -89,15 +122,46 @@ ThemeData _buildDarkTheme() {
     scaffoldBackgroundColor: charcoal,
     canvasColor: transparent,
     textTheme: TextTheme(
-      display4: TextStyle(fontSize: 100.0, color: blueLight, fontWeight: FontWeight.w200,),
-      display3: TextStyle(fontSize: 90.0, color: blueLight, fontWeight: FontWeight.bold,),
-      display2: TextStyle(fontSize: 45.0, color: blueLight,),
-      display1: TextStyle(fontSize: 35.0, color: blueLight,),
-      headline: TextStyle(fontSize: 25.0, color: white, fontWeight: FontWeight.w200,),
-      title: TextStyle(fontSize: 20.0, color: blueLight, fontWeight: FontWeight.w200,),
-      subhead: TextStyle(fontSize: 18.0, color: white,),
-      body2: TextStyle(color: blueLight, fontWeight: FontWeight.w700,),
-      body1: TextStyle(color: white, fontWeight: FontWeight.w700,),
+      headline1: TextStyle(
+        fontSize: 100.0,
+        color: blueLight,
+        fontWeight: FontWeight.w200,
+      ),
+      headline2: TextStyle(
+        fontSize: 90.0,
+        color: blueLight,
+        fontWeight: FontWeight.bold,
+      ),
+      headline3: TextStyle(
+        fontSize: 45.0,
+        color: blueLight,
+      ),
+      headline4: TextStyle(
+        fontSize: 35.0,
+        color: blueLight,
+      ),
+      headline5: TextStyle(
+        fontSize: 25.0,
+        color: white,
+        fontWeight: FontWeight.w200,
+      ),
+      headline6: TextStyle(
+        fontSize: 20.0,
+        color: blueLight,
+        fontWeight: FontWeight.w200,
+      ),
+      subtitle1: TextStyle(
+        fontSize: 18.0,
+        color: white,
+      ),
+      bodyText1: TextStyle(
+        color: blueLight,
+        fontWeight: FontWeight.w700,
+      ),
+      bodyText2: TextStyle(
+        color: white,
+        fontWeight: FontWeight.w700,
+      ),
     ),
   );
 
