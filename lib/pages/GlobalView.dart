@@ -91,61 +91,60 @@ class _GlobalViewState extends State<GlobalView> {
                       );
                     },
                   )
-                : Center(child: CircularProgressIndicator()),
+                : Center(
+                    child: CircularProgressIndicator(),
+                  ),
           )
         : Padding(
             padding: const EdgeInsets.all(10.0),
             child: (globalData != null && countryData != null)
-                ? ListView(
+                ? ListView.builder(
                     shrinkWrap: true,
-                    children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          GlobalDataCard(
-                            title: "Confirmed Cases",
-                            data: "${globalData?.cases}",
-                            textColor: Colors.red[800],
-                          ),
-                          GlobalDataCard(
-                            title: "Confirmed Deaths",
-                            data: "${globalData?.deaths}",
-                            textColor: Theme.of(context).primaryColorDark,
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          GlobalDataCard(
-                            title: "Recovered Cases",
-                            data: "${globalData?.recovered}",
-                            textColor: Colors.green[500],
-                          ),
-                          GlobalDataCard(
-                            title: "Active Cases",
-                            data: "${globalData?.active}",
-                            textColor: Colors.deepOrangeAccent,
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.vertical,
-                          itemCount:
-                              countryData.isEmpty ? 1 : countryData.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return CountryDataCard(
-                              countryData: countryData[index],
-                            );
-                          },
-                        ),
-                      ),
-                    ],
+                    scrollDirection: Axis.vertical,
+                    itemCount: countryData.isEmpty ? 1 : countryData.length + 1,
+                    itemBuilder: (BuildContext context, int index) {
+                      if (index == 0) {
+                        return Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                GlobalDataCard(
+                                  title: "Confirmed Cases",
+                                  data: "${globalData?.cases}",
+                                  textColor: Colors.red[800],
+                                ),
+                                GlobalDataCard(
+                                  title: "Confirmed Deaths",
+                                  data: "${globalData?.deaths}",
+                                  textColor: Theme.of(context).primaryColorDark,
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                GlobalDataCard(
+                                  title: "Recovered Cases",
+                                  data: "${globalData?.recovered}",
+                                  textColor: Colors.green[500],
+                                ),
+                                GlobalDataCard(
+                                  title: "Active Cases",
+                                  data: "${globalData?.active}",
+                                  textColor: Colors.deepOrangeAccent,
+                                ),
+                              ],
+                            ),
+                          ],
+                        );
+                      }
+                      return CountryDataCard(
+                        countryData: countryData[index - 1],
+                      );
+                    },
                   )
                 : Center(child: CircularProgressIndicator()),
           );
@@ -219,17 +218,19 @@ class CountryDataCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Expanded(
+                  Flexible(
                     flex: 1,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Container(
-                          child: Image.network(
-                            countryData.countryInfo?.flag,
-                            height: 80.0,
-                          ),
+                          child: countryData.countryInfo.flag != null
+                              ? Image.network(
+                                  countryData.countryInfo.flag,
+                                  height: 80.0,
+                                )
+                              : Container(),
                         ),
                         SelectableText(
                           countryData?.country,
@@ -238,7 +239,7 @@ class CountryDataCard extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Expanded(
+                  Flexible(
                     flex: 5,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -291,7 +292,9 @@ class CountryDataCard extends StatelessWidget {
                   ListTile(
                     leading: CircleAvatar(
                       backgroundColor: Colors.transparent,
-                      child: Image.network(countryData.countryInfo?.flag),
+                      child: countryData.countryInfo.flag != null
+                          ? Image.network(countryData.countryInfo.flag)
+                          : Container(),
                       maxRadius: 15.0,
                     ),
                     title: SelectableText(

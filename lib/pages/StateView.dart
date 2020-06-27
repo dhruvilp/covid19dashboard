@@ -20,25 +20,31 @@ class _StateViewState extends State<StateView> {
   Future<void> _fetchStateData() async {
     try {
       stateData = await fetchStateData();
-      setState(() { stateData = this.stateData; });
-    } catch (e) { print("ERROR from fetchStateData: $e"); }
+      setState(() {
+        stateData = this.stateData;
+      });
+    } catch (e) {
+      print("ERROR from fetchStateData: $e");
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return stateData != null
-      ? Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: ListView.builder(
-          shrinkWrap: true,
-          scrollDirection: Axis.vertical,
-          itemCount: stateData.isEmpty ? 1 : stateData.length,
-          itemBuilder: (BuildContext context, int index) {
-            return StateDataCard(stateData: stateData[index],);
-          },
-        ),
-      )
-      : Center(child: CircularProgressIndicator());
+        ? Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: ListView.builder(
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              itemCount: stateData.isEmpty ? 1 : stateData.length,
+              itemBuilder: (BuildContext context, int index) {
+                return StateDataCard(
+                  stateData: stateData[index],
+                );
+              },
+            ),
+          )
+        : Center(child: CircularProgressIndicator());
   }
 }
 
@@ -63,7 +69,7 @@ class StateDataCard extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 10.0),
               child: SelectableText(
                 stateData?.state,
-                style: Theme.of(context).textTheme.headline,
+                style: Theme.of(context).textTheme.headline5,
                 maxLines: null,
               ),
             ),
@@ -80,7 +86,7 @@ class StateDataCard extends StatelessWidget {
                   item2Color: Theme.of(context).primaryColorDark,
                   item3Title: "Active Cases",
                   item3value: stateData?.active,
-                  item3Color: Colors.deepOrangeAccent,
+                  item3Color: Colors.deepOrange,
                   item4Title: "Today Cases",
                   item4value: stateData?.todayCases,
                   item4Color: Theme.of(context).primaryColor,
@@ -113,152 +119,211 @@ class FiveColLayout extends StatelessWidget {
   final Color item3Color;
   final Color item4Color;
   final Color item5Color;
-  const FiveColLayout({Key key, this.item1Title, this.item2Title, this.item3Title, this.item1value, this.item2value, this.item3value, this.item1Color, this.item2Color, this.item3Color, this.item4Title, this.item5Title, this.item4value, this.item5value, this.item4Color, this.item5Color}) : super(key: key);
+  const FiveColLayout(
+      {Key key,
+      this.item1Title,
+      this.item2Title,
+      this.item3Title,
+      this.item1value,
+      this.item2value,
+      this.item3value,
+      this.item1Color,
+      this.item2Color,
+      this.item3Color,
+      this.item4Title,
+      this.item5Title,
+      this.item4value,
+      this.item5value,
+      this.item4Color,
+      this.item5Color})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return isWeb(context) ? Row(
-      children: <Widget>[
-        Expanded(
-          flex: 1,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
+    return isWeb(context)
+        ? Row(
             children: <Widget>[
-              SelectableText(
-                item1Title,
-                style: Theme.of(context).textTheme.subhead,
+              Expanded(
+                flex: 1,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    SelectableText(
+                      item1Title,
+                      style: Theme.of(context).textTheme.subtitle1,
+                    ),
+                    SelectableText(
+                      "$item1value",
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: item1Color,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              SelectableText(
-                "$item1value",
-                style: TextStyle(fontSize: 20.0, color: item1Color, fontWeight: FontWeight.w700,),
+              Expanded(
+                flex: 1,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    SelectableText(
+                      item2Title,
+                      style: Theme.of(context).textTheme.subtitle1,
+                    ),
+                    SelectableText(
+                      "$item2value",
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: item2Color,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    SelectableText(
+                      item3Title,
+                      style: Theme.of(context).textTheme.subtitle1,
+                    ),
+                    SelectableText(
+                      "$item3value",
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: item3Color,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    SelectableText(
+                      item4Title,
+                      style: Theme.of(context).textTheme.subtitle1,
+                    ),
+                    SelectableText(
+                      "$item4value",
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: item4Color,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    SelectableText(
+                      item5Title,
+                      style: Theme.of(context).textTheme.subtitle1,
+                    ),
+                    SelectableText(
+                      "$item5value",
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: item5Color,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
-          ),
-        ),
-        Expanded(
-          flex: 1,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          )
+        : Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              SelectableText(
-                item2Title,
-                style: Theme.of(context).textTheme.subhead,
+              ListTile(
+                title: SelectableText(
+                  item1Title,
+                  style: Theme.of(context).textTheme.subtitle1,
+                ),
+                trailing: SelectableText(
+                  "$item1value",
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: item1Color,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
               ),
-              SelectableText(
-                "$item2value",
-                style: TextStyle(fontSize: 20.0, color: item2Color, fontWeight: FontWeight.w700,),
+              ListTile(
+                title: SelectableText(
+                  item2Title,
+                  style: Theme.of(context).textTheme.subtitle1,
+                ),
+                trailing: SelectableText(
+                  "$item2value",
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: item2Color,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+              ListTile(
+                title: SelectableText(
+                  item3Title,
+                  style: Theme.of(context).textTheme.subtitle1,
+                ),
+                trailing: SelectableText(
+                  "$item3value",
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: item3Color,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+              ListTile(
+                title: SelectableText(
+                  item4Title,
+                  style: Theme.of(context).textTheme.subtitle1,
+                ),
+                trailing: SelectableText(
+                  "$item4value",
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: item4Color,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+              ListTile(
+                title: SelectableText(
+                  item5Title,
+                  style: Theme.of(context).textTheme.subtitle1,
+                ),
+                trailing: SelectableText(
+                  "$item5value",
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: item5Color,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
               ),
             ],
-          ),
-        ),
-        Expanded(
-          flex: 1,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              SelectableText(
-                item3Title,
-                style: Theme.of(context).textTheme.subhead,
-              ),
-              SelectableText(
-                "$item3value",
-                style: TextStyle(fontSize: 20.0, color: item3Color, fontWeight: FontWeight.w700,),
-              ),
-            ],
-          ),
-        ),
-        Expanded(
-          flex: 1,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              SelectableText(
-                item4Title,
-                style: Theme.of(context).textTheme.subhead,
-              ),
-              SelectableText(
-                "$item4value",
-                style: TextStyle(fontSize: 20.0, color: item4Color, fontWeight: FontWeight.w700,),
-              ),
-            ],
-          ),
-        ),
-        Expanded(
-          flex: 1,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              SelectableText(
-                item5Title,
-                style: Theme.of(context).textTheme.subhead,
-              ),
-              SelectableText(
-                "$item5value",
-                style: TextStyle(fontSize: 20.0, color: item5Color, fontWeight: FontWeight.w700,),
-              ),
-            ],
-          ),
-        ),
-      ],
-    ) : Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        ListTile(
-          title: SelectableText(
-            item1Title,
-            style: Theme.of(context).textTheme.subhead,
-          ),
-          trailing: SelectableText(
-            "$item1value",
-            style: TextStyle(fontSize: 20.0, color: item1Color, fontWeight: FontWeight.w700,),
-          ),
-        ),
-        ListTile(
-          title: SelectableText(
-            item2Title,
-            style: Theme.of(context).textTheme.subhead,
-          ),
-          trailing: SelectableText(
-            "$item2value",
-            style: TextStyle(fontSize: 20.0, color: item2Color, fontWeight: FontWeight.w700,),
-          ),
-        ),
-        ListTile(
-          title: SelectableText(
-            item3Title,
-            style: Theme.of(context).textTheme.subhead,
-          ),
-          trailing: SelectableText(
-            "$item3value",
-            style: TextStyle(fontSize: 20.0, color: item3Color, fontWeight: FontWeight.w700,),
-          ),
-        ),
-        ListTile(
-          title: SelectableText(
-            item4Title,
-            style: Theme.of(context).textTheme.subhead,
-          ),
-          trailing: SelectableText(
-            "$item4value",
-            style: TextStyle(fontSize: 20.0, color: item4Color, fontWeight: FontWeight.w700,),
-          ),
-        ),
-        ListTile(
-          title: SelectableText(
-            item5Title,
-            style: Theme.of(context).textTheme.subhead,
-          ),
-          trailing: SelectableText(
-            "$item5value",
-            style: TextStyle(fontSize: 20.0, color: item5Color, fontWeight: FontWeight.w700,),
-          ),
-        ),
-      ],
-    );
+          );
   }
 }

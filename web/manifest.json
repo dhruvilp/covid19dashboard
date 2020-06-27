@@ -2,7 +2,7 @@
     "name": "covid19_dashboard",
     "short_name": "Covid-19 Dashboard",
     "start_url": ".",
-    "display": "standalone",
+    "display": "minimal-ui",
     "background_color": "#0175C2",
     "theme_color": "#2962FF",
     "description": "Covid-19 Live Dashboard",
